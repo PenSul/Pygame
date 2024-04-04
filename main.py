@@ -3,8 +3,8 @@ import sys
 
 # Scripts will be loaded here
 from scripts.gamestate import GameStateManager
-from scripts.menu import Start
-from scripts.game import Level
+from scripts.start import Start
+from scripts.level import Level
 
 # Game setting and variable
 screen_width = 992

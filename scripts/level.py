@@ -21,14 +21,14 @@ class Level:
 
         # Assets will be loaded here
         self.assets = {
-            'round_letters': load_images('/round_letters'),
             'background': load_image('/background.png'),
             'bg_clouds': load_images('/bg_elements/clouds'),
+            'round_letters': load_images('/round_letters/')
         }
 
         # Background clouds create
         self.bg_clouds = backgrounds(self.assets['bg_clouds'], count=16)
-
+        # XY
         self.scroll = [0, 0]
 
     def run(self):
@@ -44,4 +44,5 @@ class Level:
         self.bg_clouds.update()
         self.bg_clouds.render(self.display, offset=render_scroll)
 
+        # Transform the display to screen
         self.screen.blit(pygame.transform.scale(self.display, self.screen.get_size()), (0, 0))

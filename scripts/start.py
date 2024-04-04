@@ -21,12 +21,14 @@ class Start:
 
         # Assets will be loaded here
         self.assets = {
+            'background2': load_image('/background2.png'),
             'startbtn': load_image('/Buttons/Rect/PlayText/Default.png'),
         }
 
-        # Menu button create
-        self.startbtn = Button(screen_width / 2, screen_height / 2, self.assets['startbtn'], 0.8, self.gameStateManager)
+        self.startbtn = Button(screen_width / 2 - 70, screen_height / 2 - 70, self.assets['startbtn'], 1, self.gameStateManager)
 
     def run(self):
+        # Background
+        self.screen.blit(self.assets['background2'], (0, 0))
         # Start Button
         self.startbtn.draw(self.screen)
