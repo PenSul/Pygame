@@ -35,6 +35,8 @@ class Level:
         # Background image
         self.display.blit(self.assets['background'], (0, 0))
 
+        self.display.blit(pygame.transform.scale(self.assets['round_letters'][1], (32 , 32)), (10,10))
+
         # Camera Render Scrolling for xy coord
         self.scroll[0] = self.display.get_width() / 2
         self.scroll[1] = self.display.get_height() / 2
