@@ -22,7 +22,7 @@ class Start:
         # Assets will be loaded here
         self.assets = {
             'background2': load_image('/background2.png'),
-            'startbtn': load_image('/Buttons/Rect/PlayText/Default.png'),
+            'startbtn': load_image('/Buttons/Rect/PlayText/Default.png')
         }
 
         self.startbtn = Button(screen_width / 2 - 70, screen_height / 2 - 70, self.assets['startbtn'], 1, self.gameStateManager)

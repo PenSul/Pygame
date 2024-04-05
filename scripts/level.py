@@ -1,5 +1,9 @@
 import pygame
 
+# English word list
+from english_words import get_english_words_set
+web2lowerset = list(get_english_words_set(['web2'], lower=True))
+
 # Scripts will be loaded here
 from scripts.utils import load_image, load_images
 from scripts.background import backgrounds
@@ -23,7 +27,7 @@ class Level:
         self.assets = {
             'background': load_image('/background.png'),
             'bg_clouds': load_images('/bg_elements/clouds'),
-            'round_letters': load_images('/round_letters/')
+            'round_letters': load_images('/round_letters/'),
         }
 
         # Background clouds create
@@ -35,8 +39,6 @@ class Level:
         # Background image
         self.display.blit(self.assets['background'], (0, 0))
 
-        self.display.blit(pygame.transform.scale(self.assets['round_letters'][1], (32 , 32)), (10,10))
-
         # Camera Render Scrolling for xy coord
         self.scroll[0] = self.display.get_width() / 2
         self.scroll[1] = self.display.get_height() / 2
@@ -45,6 +47,9 @@ class Level:
         # Background Elements
         self.bg_clouds.update()
         self.bg_clouds.render(self.display, offset=render_scroll)
+
+        # Letter Example( The second list: [0] is a.png [1] is b.png...)
+        # self.screen.blit(pygame.transform.scale(self.assets['round_letters'][1], (16, 16)), (100, 100))
 
         # Transform the display to screen
         self.screen.blit(pygame.transform.scale(self.display, self.screen.get_size()), (0, 0))
