@@ -1,15 +1,18 @@
 '''Pygame/Background Tests'''
 
-# Python Module(s)
+# Python module(s)
 import pygame
 import os
 import sys
 import unittest
-from unittest.mock import Mock
 
 # Add the root directory to the Python path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from scripts.background import background, backgrounds
+
+# Game setting and variable
+screen_width = 992
+screen_height = 544
 
 # Test case for background image building, updating and rendering
 class TestBackground(unittest.TestCase):
@@ -23,7 +26,7 @@ class TestBackground(unittest.TestCase):
         self.assertEqual(self.background.pos[0], initial_pos[0] + self.background.speed)
 
     def test_render(self):
-        surf = pygame.Surface((800, 600))
+        surf = pygame.Surface((screen_width, screen_height))
         offset = (0, 0)
         self.background.render(surf, offset)
 
@@ -40,7 +43,7 @@ class TestBackgrounds(unittest.TestCase):
             self.assertEqual(background.pos[0], initial_pos[0] + background.speed)
 
     def test_render(self):
-        surf = pygame.Surface((800, 600))
+        surf = pygame.Surface((screen_width, screen_height))
         offset = (0, 0)
         self.backgrounds.render(surf, offset)
 

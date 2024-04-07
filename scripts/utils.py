@@ -5,7 +5,7 @@ BASE_IMG_PATH = 'assets/images'
 
 # Load image path
 def load_image(path):
-    image = pygame.image.load(BASE_IMG_PATH + path).convert()
+    image = pygame.image.load(BASE_IMG_PATH + path)
     image.set_colorkey((0, 0, 0))
     return image
 
