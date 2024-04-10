@@ -36,7 +36,8 @@ class TestMenuButton(unittest.TestCase):
         
         # Check if action is triggered when button is clicked
         mock_get_pressed.return_value = (1, 0, 0)  # Simulate mouse click
-        self.assertTrue(button.draw(surf))  # Action expected
+        with self.assertRaises(SystemExit):
+            button.draw(surf)
 
 if __name__ == '__main__':
     unittest.main()
