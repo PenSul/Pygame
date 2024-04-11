@@ -46,8 +46,10 @@ class Button:
 
 		# Check if the mouse is over the button and if it is clicked
 		if self.rect.collidepoint(pos):
-			self.image = self.assets['startbtnhover']  # Change the button image to the hover state
-			outline(self.image, (self.rect.topleft))  # Outline the button image with white line when hover
+			# Change the button image to the hover state
+			self.image = self.assets['startbtnhover']  
+			# Outline the button image with white line when hover
+			outline(self.assets['startbtnhover'], (screen_width / 2 - 74, screen_height / 2 - 72)) # The pos have to self-adjust
 			if pygame.mouse.get_pressed()[0] == 1 and not self.clicked:  # Check if the left mouse button is clicked
 				self.clicked = True  # Set the clicked flag to True
 				action = True  # Set the action variable to True

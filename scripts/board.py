@@ -19,6 +19,8 @@ def game_over_screen(screen, list_copy):
         screen.fill((255, 255, 255))  # Fill the screen with white color
         display_word = game_over_format.render("YOU WIN", True, "Green")  # Render the "YOU WIN" message in green color
         screen.blit(display_word, (175, 200))  # Display the message on the screen at specified coordinates
+        pygame.mixer.Sound('assets/sfx/You_Win.wav').play(0)
+
 
 def refine_list(lst):
     # Function to remove duplicates from words in a list
@@ -39,7 +41,7 @@ def remove_duplicate(word):
         return 0  # Return 0 if an empty word is encountered
 
 def display_board():
-    # Function to display the game board
+    # Function to display the game board and box(Correct:Green---/-->Already Selected:Cyan)
     x_start = 0
     y_start = 0
     for i in range(15):
@@ -134,6 +136,7 @@ while running:
                 index = words_to_guess.index(remove_duplicate(word))  # Get the index of the word in words to guess
                 words_to_guess.remove(remove_duplicate(word))  # Remove the word from words to guess
                 generate.words_copy.pop(index)  # Remove the word from the generated words list
+                pygame.mixer.Sound('assets/sfx/Retro_PowerUP_09.wav').play()  # Play the correct sound when a word is found correctly
 
             word = ""  # Reset the word
             guessed_indexes = []  # Reset the guessed indexes

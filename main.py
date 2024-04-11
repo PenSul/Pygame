@@ -31,6 +31,8 @@ class Game:
 
     # Main game loop
     def run(self):
+        pygame.mixer.music.load('assets/sfx/Patreon_Challenge_06.ogg')
+        pygame.mixer.music.play(-1)
         while True:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
