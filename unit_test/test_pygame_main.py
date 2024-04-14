@@ -1,27 +1,34 @@
 '''Pygame/GUI Tests'''
 
-# Python module(s)
+# Python Module(s)
 import sys
 import os
 import pygame
 import unittest
 
-# Add the root directory to the Python path
+# Add the root directory to the Python path for module imports
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
-# Scripts will be loaded here
+# Import the GameStateManager and Game classes for testing
 from scripts.gamestate import GameStateManager
 from main import Game
 
-# Test Cases of Game Initialization
+# Define a test class TestGame that inherits from unittest.TestCase
 class TestGame(unittest.TestCase):
+    # Define a test method test_game_initialization to test the initialization of the Game class
     def test_game_initialization(self):
+        # Instantiate the Game class
         game = Game()
+        # Assert that the screen attribute is an instance of pygame Surface
         self.assertIsInstance(game.screen, pygame.Surface)
+        # Assert that the display attribute is an instance of pygame Surface
         self.assertIsInstance(game.display, pygame.Surface)
+        # Assert that the clock attribute is an instance of pygame time Clock
         self.assertIsInstance(game.clock, pygame.time.Clock)
+        # Assert that the gameStateManager attribute is an instance of GameStateManager
         self.assertIsInstance(game.gameStateManager, GameStateManager)
+        # Assert that the initial state of the game is 'start_scene'
         self.assertEqual(game.gameStateManager.get_state(), 'start_scene')
 
+# Run the unit tests if the script is executed directly
 if __name__ == '__main__':
     unittest.main()

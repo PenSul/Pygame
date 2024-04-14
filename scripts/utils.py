@@ -1,6 +1,8 @@
+# Python Module(s)
 import pygame
 import os
 
+# Initialize pygame
 pygame.init()
 
 # Game setting and variable
@@ -27,6 +29,7 @@ def load_images(path):
         images.append(load_image(path + '/' + images_name))
     return images
 
+# Create a outline on a image
 def outline(img, loc):
     mask = pygame.mask.from_surface(img)
     mask_outline = mask.outline()
@@ -38,5 +41,3 @@ def outline(img, loc):
     screen.blit(mask_surf, (loc[0]+1, loc[1]))
     screen.blit(mask_surf, (loc[0], loc[1]-1))
     screen.blit(mask_surf, (loc[0], loc[1]+1))
-
-    

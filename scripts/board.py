@@ -7,29 +7,29 @@ import generate
 from generate import words_copy  
 
 pygame.init()  # Initialize the pygame module
-pygame.display.init()
+pygame.display.init()  # Initialize the display
 screen = pygame.display.set_mode((1000, 600))  # Set up the display screen with dimensions 800x600 pixels
 selected = []  # Initialize an empty list named selected
 
+# Function to display the game over screen
 def game_over_screen(screen, list_copy):
-    # Function to display the game over screen
     game_over_format = pygame.font.Font("freesansbold.ttf", 100)  # Set the font style and size for the game over message
 
     if list_copy == []:
         screen.fill((255, 255, 255))  # Fill the screen with white color
-        display_word = game_over_format.render("YOU WIN", True, "Green")  # Render the "YOU WIN" message in green color
+        display_word = game_over_format.render("YOU WIN!!!!", True, "Green")  # Render the "YOU WIN" message in green color
         screen.blit(display_word, (175, 200))  # Display the message on the screen at specified coordinates
+        # Play the You Win Sound once u win
         pygame.mixer.Sound('assets/sfx/You_Win.wav').play(0)
 
-
+# Function to remove duplicates from words in a list
 def refine_list(lst):
-    # Function to remove duplicates from words in a list
     for i in range(len(lst)):
         lst[i] = remove_duplicate(lst[i])  # Call the remove_duplicate function for each word in the list
     return lst
 
+# Function to remove consecutive duplicate characters from a word
 def remove_duplicate(word):
-    # Function to remove consecutive duplicate characters from a word
     try:
         s = ""
         s += word[0]  # Add the first character of the word to the new string
@@ -39,9 +39,9 @@ def remove_duplicate(word):
         return s
     except IndexError:
         return 0  # Return 0 if an empty word is encountered
-
+    
+# Function to display the game board and box(Correct:Green---/-->Already Selected:Cyan)
 def display_board():
-    # Function to display the game board and box(Correct:Green---/-->Already Selected:Cyan)
     x_start = 0
     y_start = 0
     for i in range(15):
@@ -58,8 +58,8 @@ def display_board():
         x_start = 0
         y_start += 40
 
+# Function to print the search grid on the screen
 def print_search():
-    # Function to print the search grid on the screen
     y = 25
     search_format = pygame.font.Font("freesansbold.ttf", 30)  # Set the font style and size for the search grid
     for line in generate.grid:
@@ -72,21 +72,21 @@ def print_search():
             x += 40
         y += 40
 
+# Function to display the words on the screen
 def display_words():
-    # Function to display the words on the screen
     x = 625
     y = 80
     word_format = pygame.font.Font("freesansbold.ttf", 25)  # Set the font style and size for the words
     title_words_format = pygame.font.Font("freesansbold.ttf", 35)  # Set the font style and size for the title
-    title_words = title_words_format.render("WORDS", True, ('black'))  # Render the title "WORDS" in black
+    title_words = title_words_format.render("WORDS TO FIND", True, ('black'))  # Render the title "WORDS" in black
     screen.blit(title_words, (x, 25))  # Display the title at specified coordinates
     for word in generate.words_copy:
         display_word = word_format.render(word, True, (0, 0, 0))  # Render each word in black color
         screen.blit(display_word, (x, y))  # Display the word at specified coordinates
         y += 33
 
+# Function to check if the game is completed
 def is_game_completed():
-    # Function to check if the game is completed
     if not words_to_guess or not words_copy:  # If there are no words left to guess or display
         return True  # Return True indicating the game is completed
     return False  # Return False indicating the game is not completed
@@ -109,6 +109,7 @@ while running:
     if is_game_completed():  # Check if the game is completed
         game_over_screen(screen, words_to_guess)  # Call the game over screen function with the remaining words to guess
 
+    # Event Management aka Input control
     for event in pygame.event.get():  # Iterate through each event in the pygame event queue
         if (event.type != pygame.MOUSEBUTTONUP):
             if event.type == pygame.QUIT:  # If the user clicks the close button
@@ -142,3 +143,7 @@ while running:
             guessed_indexes = []  # Reset the guessed indexes
 
         pygame.display.update()  # Update the display to show any changes
+
+# I am finally done with this sh*t
+# Good Luck playing the game :) Every round take you 5 mins
+# Debugging is a pain

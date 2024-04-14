@@ -83,3 +83,5 @@ for i in range(15):
     for j in range(15):
         if grid[i][j] == "0":
             grid[i][j] = random.choice(alphabet)
+
+# I am so done with this ngl
